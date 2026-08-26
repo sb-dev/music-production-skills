@@ -1,0 +1,12 @@
+node_modules/
+dist/
+coverage/
+.tmp/
+tmp/
+.DS_Store
+.env
+.env.*
+!.env.example
+*.log
+/tests/fixtures/generated/
+/tests/benchmark/transcripts-local/

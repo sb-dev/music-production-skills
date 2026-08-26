@@ -1,0 +1,10 @@
+id: composition-001
+type: composition
+workflowState: final
+decisionState: approved
+parents: [hook-b, groove-c]
+lockedDecisions: [melody, structure]
+openDecisions: [instrumentation]
+selectionSources:
+  melody: hook-b
+  groove: groove-c

@@ -1,0 +1,29 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  deterministic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - run: npm install --no-package-lock --ignore-scripts
+      - run: npm run check
+
+  installation-smoke:
+    if: ${{ false }} # Stage 13 enables this only after clean-project installation has been proved locally.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-package-lock --ignore-scripts
+      - run: RUN_SKILLS_CLI_SMOKE=1 npm run test:smoke

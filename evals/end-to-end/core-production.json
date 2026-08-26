@@ -1,0 +1,24 @@
+{
+  "name": "core-production",
+  "workflow": [
+    "brief",
+    "composition-draft-set",
+    "component-selection",
+    "arrangement",
+    "demo",
+    "evaluate",
+    "targeted-refinement",
+    "final-production",
+    "final-evaluation"
+  ],
+  "invariants": [
+    "meaningful alternatives",
+    "selection persists",
+    "approved decisions persist",
+    "Replicate owns model execution",
+    "targeted refinement before restart",
+    "lineage intact",
+    "technical QC",
+    "final evaluation references original brief"
+  ]
+}

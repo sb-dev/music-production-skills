@@ -1,0 +1,23 @@
+name: Production capability request
+description: Propose a music-production behaviour, not infrastructure for its own sake
+title: "[capability] "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Production problem
+      description: Which real workflow is blocked or materially worse today?
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence / example
+      description: What example or repeated workflow demonstrates the need?
+    validations:
+      required: true
+  - type: textarea
+    id: boundary
+    attributes:
+      label: Scope and boundary
+      description: Why does this belong in Music Production Skills rather than an upstream provider/tool or another project-family repository?

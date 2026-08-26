@@ -1,0 +1,4 @@
+import { mkdir } from "node:fs/promises";
+import { join } from "node:path";
+import { runCommand } from "../../tools/run-command.ts";
+export async function makeFixtures(root:string):Promise<{audio:string;clippedAudio:string}>{await mkdir(root,{recursive:true});const audio=join(root,"tone.wav"),clippedAudio=join(root,"clipped.wav");const a=await runCommand("ffmpeg",["-nostdin","-hide_banner","-loglevel","error","-y","-f","lavfi","-i","sine=frequency=440:duration=0.4","-c:a","pcm_s16le",audio]);if(a.code!==0)throw new Error(`Could not generate audio fixture: ${a.stderr}`);const b=await runCommand("ffmpeg",["-nostdin","-hide_banner","-loglevel","error","-y","-f","lavfi","-i","sine=frequency=440:duration=0.4","-af","volume=20,alimiter=limit=1","-c:a","pcm_s16le",clippedAudio]);if(b.code!==0)throw new Error(`Could not generate clipped fixture: ${b.stderr}`);return{audio,clippedAudio};}

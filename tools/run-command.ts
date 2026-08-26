@@ -1,0 +1,26 @@
+import { spawn } from "node:child_process";
+
+export interface CommandResult {
+  readonly stdout: string;
+  readonly stderr: string;
+  readonly code: number;
+}
+
+export async function runCommand(command: string, args: readonly string[], cwd?: string): Promise<CommandResult> {
+  return await new Promise((resolve, reject) => {
+    const child = spawn(command, [...args], {
+      cwd,
+      shell: false,
+      stdio: ["ignore", "pipe", "pipe"],
+      env: process.env,
+    });
+    let stdout = "";
+    let stderr = "";
+    child.stdout.setEncoding("utf8");
+    child.stderr.setEncoding("utf8");
+    child.stdout.on("data", (chunk: string) => { stdout += chunk; });
+    child.stderr.on("data", (chunk: string) => { stderr += chunk; });
+    child.on("error", reject);
+    child.on("close", (code) => resolve({ stdout, stderr, code: code ?? 1 }));
+  });
+}

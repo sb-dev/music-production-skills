@@ -1,0 +1,16 @@
+{
+  "name": "preserve-production",
+  "locked": [
+    "melody",
+    "lyrics",
+    "structure"
+  ],
+  "requestedChange": [
+    "production"
+  ],
+  "expect": [
+    "locked musical decisions preserved",
+    "only production reopened",
+    "preservation checked after generation"
+  ]
+}

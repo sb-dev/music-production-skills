@@ -1,0 +1,25 @@
+{
+  "name": "music-production-skills",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "validate": "node --experimental-strip-types tools/validate-repository.ts",
+    "test:unit": "node --experimental-strip-types --test tests/unit/*.test.ts",
+    "test:stages": "node --experimental-strip-types --test tests/stages/*.test.ts",
+    "test:evals": "node --experimental-strip-types tools/run-evals.ts",
+    "test:benchmark": "node --experimental-strip-types --test tests/benchmark/*.test.ts",
+    "test:semantic:rescore": "node --experimental-strip-types tools/run-benchmark.ts --rescore",
+    "smoke:install": "node --experimental-strip-types tools/smoke-install.ts",
+    "test:smoke": "npm run smoke:install",
+    "check": "npm run typecheck && npm run validate && npm run test:unit && npm run test:stages && npm run test:evals && npm run test:benchmark && npm run test:semantic:rescore",
+    "test": "npm run check && npm run test:smoke"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.0"
+  }
+}

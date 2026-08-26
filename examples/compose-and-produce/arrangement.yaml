@@ -1,0 +1,8 @@
+id: arrangement-001
+type: arrangement
+workflowState: final
+decisionState: approved
+parents: [composition-001]
+lockedDecisions: [melody, structure]
+openDecisions: [sound-palette]
+selectionSources: {}

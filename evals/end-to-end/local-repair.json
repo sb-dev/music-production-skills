@@ -1,0 +1,13 @@
+{
+  "name": "local-repair",
+  "defect": {
+    "region": "chorus-2",
+    "kind": "pronunciation"
+  },
+  "expect": [
+    "smallest affected unit identified",
+    "local-capable Replicate model preferred",
+    "transition boundaries checked",
+    "whole-track regeneration justified if used"
+  ]
+}
