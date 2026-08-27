@@ -1,0 +1,17 @@
+[
+  {"level":1,"id":"night-drive","genre":"synthwave","path":"examples/level-1-night-drive/README.md","primaryCapability":"controlled-output"},
+  {"level":1,"id":"sunday-static","genre":"neo-soul-rnb","path":"examples/level-1-sunday-static/README.md","primaryCapability":"controlled-output"},
+  {"level":1,"id":"northbound","genre":"indie-folk","path":"examples/level-1-northbound/README.md","primaryCapability":"controlled-output"},
+  {"level":2,"id":"concrete-halo","genre":"boom-bap","path":"examples/level-2-concrete-halo/README.md","primaryCapability":"selection-preservation"},
+  {"level":2,"id":"soft-collapse","genre":"dream-pop-shoegaze","path":"examples/level-2-soft-collapse/README.md","primaryCapability":"selection-preservation"},
+  {"level":2,"id":"high-water","genre":"blues-roots-rock","path":"examples/level-2-high-water/README.md","primaryCapability":"selection-preservation"},
+  {"level":3,"id":"low-orbit","genre":"melodic-techno","path":"examples/level-3-low-orbit/README.md","primaryCapability":"full-production"},
+  {"level":3,"id":"half-light","genre":"alternative-rnb","path":"examples/level-3-half-light/README.md","primaryCapability":"full-production"},
+  {"level":3,"id":"static-summer","genre":"indie-dream-rock","path":"examples/level-3-static-summer/README.md","primaryCapability":"full-production"},
+  {"level":4,"id":"redline","genre":"drum-and-bass","path":"examples/level-4-redline/README.md","primaryCapability":"targeted-repair"},
+  {"level":4,"id":"no-reply","genre":"alternative-pop-rnb","path":"examples/level-4-no-reply/README.md","primaryCapability":"targeted-repair"},
+  {"level":4,"id":"winter-road","genre":"indie-folk","path":"examples/level-4-winter-road/README.md","primaryCapability":"targeted-repair"},
+  {"level":5,"id":"after-hours","genre":"house-advertising","path":"examples/level-5-after-hours/README.md","primaryCapability":"cross-domain-delivery"},
+  {"level":5,"id":"last-train-home","genre":"ambient-electronic-video","path":"examples/level-5-last-train-home/README.md","primaryCapability":"cross-domain-delivery"},
+  {"level":5,"id":"checkpoint","genre":"chiptune-synthwave-game","path":"examples/level-5-checkpoint/README.md","primaryCapability":"cross-domain-delivery"}
+]

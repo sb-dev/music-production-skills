@@ -1,0 +1,687 @@
+[
+  {
+    "id": "compose-cheapest-representation",
+    "suite": "composition-control",
+    "capability": "cheap-drafting",
+    "measurement": "agent",
+    "hardGate": true,
+    "source": "examples/level-1-night-drive/README.md",
+    "criteria": [
+      "uses symbolic or section-level exploration before expensive full generation when uncertainty is musical",
+      "does not escalate fidelity merely because a draft sounds rough"
+    ],
+    "forbid": [
+      "immediate-final-generation"
+    ],
+    "axes": [
+      "boundary",
+      "scope"
+    ]
+  },
+  {
+    "id": "compose-meaningful-alternatives",
+    "suite": "composition-control",
+    "capability": "draft-selection",
+    "measurement": "agent",
+    "hardGate": true,
+    "source": "examples/level-2-concrete-halo/README.md",
+    "criteria": [
+      "alternatives differ materially",
+      "selection records why the chosen direction advances"
+    ],
+    "forbid": [
+      "cosmetic-variants-only"
+    ],
+    "axes": [
+      "detection",
+      "scope"
+    ]
+  },
+  {
+    "id": "compose-component-selection",
+    "suite": "composition-control",
+    "capability": "component-selection",
+    "measurement": "agent",
+    "hardGate": true,
+    "source": "examples/level-2-soft-collapse/README.md",
+    "criteria": [
+      "can select components from different drafts",
+      "selection lineage remains explicit"
+    ],
+    "forbid": [
+      "whole-draft-only-selection"
+    ],
+    "axes": [
+      "preservation",
+      "scope"
+    ]
+  },
+  {
+    "id": "decision-selected-not-locked",
+    "suite": "composition-control",
+    "capability": "decision-state",
+    "measurement": "deterministic",
+    "hardGate": true,
+    "criteria": [
+      "selected and locked remain distinct decision states"
+    ],
+    "forbid": [
+      "selection-implies-lock"
+    ],
+    "axes": [
+      "boundary"
+    ]
+  },
+  {
+    "id": "produce-pinned-model-no-silent-switch",
+    "suite": "production-control",
+    "capability": "model-routing",
+    "measurement": "agent",
+    "hardGate": true,
+    "criteria": [
+      "incompatible pinned model is surfaced as an error or explicit decision",
+      "no silent replacement"
+    ],
+    "forbid": [
+      "silent-model-switch"
+    ],
+    "axes": [
+      "boundary",
+      "routing"
+    ]
+  },
+  {
+    "id": "produce-deterministic-before-generative",
+    "suite": "production-control",
+    "capability": "tool-selection",
+    "measurement": "agent",
+    "hardGate": true,
+    "criteria": [
+      "deterministic operations use deterministic tools where sufficient"
+    ],
+    "forbid": [
+      "ai-for-simple-trim",
+      "ai-for-format-conversion"
+    ],
+    "axes": [
+      "routing"
+    ]
+  },
+  {
+    "id": "produce-local-repair-smallest-unit",
+    "suite": "production-control",
+    "capability": "targeted-refinement",
+    "measurement": "agent",
+    "hardGate": true,
+    "source": "examples/level-4-redline/README.md",
+    "criteria": [
+      "identifies smallest responsible unit",
+      "preserves surrounding approved material",
+      "checks edit boundaries"
+    ],
+    "forbid": [
+      "unjustified-whole-track-regeneration"
+    ],
+    "axes": [
+      "routing",
+      "scope",
+      "preservation"
+    ]
+  },
+  {
+    "id": "produce-whole-regeneration-fallback",
+    "suite": "production-control",
+    "capability": "refinement-fallback",
+    "measurement": "agent",
+    "hardGate": true,
+    "criteria": [
+      "whole-track regeneration is used only when local correction is unavailable or inappropriate",
+      "fallback is explained"
+    ],
+    "forbid": [
+      "whole-track-regeneration-as-default"
+    ],
+    "axes": [
+      "scope",
+      "routing"
+    ]
+  },
+  {
+    "id": "produce-no-fake-stems",
+    "suite": "production-control",
+    "capability": "stem-semantics",
+    "measurement": "deterministic",
+    "hardGate": true,
+    "criteria": [
+      "source-separated estimates are not declared native stems"
+    ],
+    "forbid": [
+      "native-stem-mislabel"
+    ],
+    "axes": [
+      "boundary"
+    ]
+  },
+  {
+    "id": "produce-final-qc-required",
+    "suite": "production-control",
+    "capability": "finalisation",
+    "measurement": "agent",
+    "hardGate": true,
+    "source": "examples/level-3-low-orbit/README.md",
+    "criteria": [
+      "final delivery includes technical inspection",
+      "final semantic evaluation references the original brief"
+    ],
+    "forbid": [
+      "final-without-qc"
+    ],
+    "axes": [
+      "delivery",
+      "boundary"
+    ]
+  },
+  {
+    "id": "evaluate-clean-control",
+    "suite": "evaluation-repair",
+    "capability": "precision",
+    "measurement": "artifact-semantic",
+    "hardGate": true,
+    "artifactStatus": "pending",
+    "criteria": [
+      "does not invent a material defect when the artifact satisfies the brief"
+    ],
+    "forbid": [
+      "unsupported-failure"
+    ],
+    "axes": [
+      "detection",
+      "precision"
+    ]
+  },
+  {
+    "id": "evaluate-preservation-drum-only",
+    "suite": "evaluation-repair",
+    "capability": "preservation",
+    "measurement": "artifact-semantic",
+    "hardGate": true,
+    "artifactStatus": "pending",
+    "criteria": [
+      "detects locked melody mutation during drum-only refinement",
+      "routes to refinement/production",
+      "limits correction to affected region"
+    ],
+    "forbid": [
+      "mastering-route",
+      "whole-composition-rewrite"
+    ],
+    "axes": [
+      "detection",
+      "routing",
+      "scope",
+      "preservation"
+    ]
+  },
+  {
+    "id": "evaluate-arrangement-final-chorus",
+    "suite": "evaluation-repair",
+    "capability": "arrangement-routing",
+    "measurement": "artifact-semantic",
+    "hardGate": true,
+    "artifactStatus": "pending",
+    "criteria": [
+      "detects missing approved final-chorus lift",
+      "routes to arrangement/production",
+      "limits repair to final chorus"
+    ],
+    "forbid": [
+      "mastering-route"
+    ],
+    "axes": [
+      "detection",
+      "routing",
+      "scope"
+    ]
+  },
+  {
+    "id": "evaluate-edit-boundary",
+    "suite": "evaluation-repair",
+    "capability": "edit-integrity",
+    "measurement": "artifact-semantic",
+    "hardGate": true,
+    "artifactStatus": "pending",
+    "criteria": [
+      "detects audible discontinuity at local repair boundary",
+      "routes to editing/refinement"
+    ],
+    "forbid": [
+      "composition-route"
+    ],
+    "axes": [
+      "detection",
+      "routing",
+      "scope"
+    ]
+  },
+  {
+    "id": "evaluate-intent-mismatch",
+    "suite": "evaluation-repair",
+    "capability": "intent",
+    "measurement": "artifact-semantic",
+    "hardGate": false,
+    "artifactStatus": "pending",
+    "criteria": [
+      "detects technically valid music that materially contradicts the brief",
+      "does not misclassify as technical failure"
+    ],
+    "forbid": [
+      "technical-only-diagnosis"
+    ],
+    "axes": [
+      "detection",
+      "routing",
+      "precision"
+    ]
+  },
+  {
+    "id": "evaluate-clipping-routing",
+    "suite": "evaluation-repair",
+    "capability": "technical-routing",
+    "measurement": "deterministic",
+    "hardGate": true,
+    "criteria": [
+      "clipping is treated as a technical finishing defect"
+    ],
+    "forbid": [
+      "composition-route",
+      "arrangement-route"
+    ],
+    "axes": [
+      "detection",
+      "routing"
+    ]
+  },
+  {
+    "id": "pack-precedence-control",
+    "suite": "extension-packs",
+    "capability": "pack-precedence",
+    "measurement": "agent",
+    "hardGate": true,
+    "criteria": [
+      "explicit user instructions outrank pack defaults",
+      "approved and locked decisions outrank pack defaults"
+    ],
+    "forbid": [
+      "pack-silently-overrides-user",
+      "pack-reopens-locked-decision"
+    ],
+    "axes": [
+      "boundary",
+      "preservation"
+    ]
+  },
+  {
+    "id": "pack-singer-songwriter-workflow",
+    "suite": "extension-packs",
+    "capability": "intimate-singer-songwriter-single",
+    "measurement": "agent",
+    "hardGate": true,
+    "source": "examples/packs/intimate-singer-songwriter-single/kitchen-light/README.md",
+    "criteria": [
+      "prioritises lyric/melody/performance before production spectacle",
+      "keeps arrangement sparse enough to preserve intimacy"
+    ],
+    "forbid": [
+      "generic-maximal-pop-default"
+    ],
+    "axes": [
+      "pack-fidelity",
+      "routing"
+    ]
+  },
+  {
+    "id": "pack-singer-songwriter-showcase",
+    "suite": "extension-packs",
+    "capability": "intimate-singer-songwriter-single",
+    "measurement": "artifact-semantic",
+    "hardGate": false,
+    "source": "examples/packs/intimate-singer-songwriter-single/kitchen-light/README.md",
+    "artifactStatus": "pending",
+    "rubric": "intimate-singer-songwriter-single",
+    "criteria": [
+      "pack production language is audible and coherent"
+    ],
+    "forbid": [
+      "overproduced-arrangement",
+      "generic-vocal-spectacle"
+    ],
+    "axes": [
+      "pack-fidelity",
+      "creative-quality"
+    ]
+  },
+  {
+    "id": "pack-techno-workflow",
+    "suite": "extension-packs",
+    "capability": "melodic-techno-club-track",
+    "measurement": "agent",
+    "hardGate": true,
+    "source": "examples/packs/melodic-techno-club-track/glass-meridian/README.md",
+    "criteria": [
+      "uses long-form evolutionary arrangement grammar",
+      "prioritises stable groove and kick/bass relationship"
+    ],
+    "forbid": [
+      "verse-chorus-pop-default"
+    ],
+    "axes": [
+      "pack-fidelity",
+      "routing"
+    ]
+  },
+  {
+    "id": "pack-techno-showcase",
+    "suite": "extension-packs",
+    "capability": "melodic-techno-club-track",
+    "measurement": "artifact-semantic",
+    "hardGate": false,
+    "source": "examples/packs/melodic-techno-club-track/glass-meridian/README.md",
+    "artifactStatus": "pending",
+    "rubric": "melodic-techno-club-track",
+    "criteria": [
+      "pack production language is audible and coherent"
+    ],
+    "forbid": [
+      "unstable-groove",
+      "nonfunctional-breakdowns"
+    ],
+    "axes": [
+      "pack-fidelity",
+      "creative-quality"
+    ]
+  },
+  {
+    "id": "pack-score-workflow",
+    "suite": "extension-packs",
+    "capability": "cinematic-hybrid-score",
+    "measurement": "agent",
+    "hardGate": true,
+    "source": "examples/packs/cinematic-hybrid-score/blackout-protocol/README.md",
+    "criteria": [
+      "uses cue context and sync points",
+      "keeps mockup distinct from final production",
+      "preserves dialogue space"
+    ],
+    "forbid": [
+      "generic-song-workflow"
+    ],
+    "axes": [
+      "pack-fidelity",
+      "routing"
+    ]
+  },
+  {
+    "id": "pack-score-showcase",
+    "suite": "extension-packs",
+    "capability": "cinematic-hybrid-score",
+    "measurement": "artifact-semantic",
+    "hardGate": false,
+    "source": "examples/packs/cinematic-hybrid-score/blackout-protocol/README.md",
+    "artifactStatus": "pending",
+    "rubric": "cinematic-hybrid-score",
+    "criteria": [
+      "cue supports dramatic function and declared sync requirements"
+    ],
+    "forbid": [
+      "dialogue-masking",
+      "missed-critical-sync"
+    ],
+    "axes": [
+      "pack-fidelity",
+      "creative-quality",
+      "delivery"
+    ]
+  },
+  {
+    "id": "pack-game-workflow",
+    "suite": "extension-packs",
+    "capability": "adaptive-game-score",
+    "measurement": "agent",
+    "hardGate": true,
+    "source": "examples/packs/adaptive-game-score/frozen-relay/README.md",
+    "criteria": [
+      "produces modular loops/layers/states rather than one linear master",
+      "defines transition/stinger behaviour and runtime handoff metadata"
+    ],
+    "forbid": [
+      "single-linear-master-only"
+    ],
+    "axes": [
+      "pack-fidelity",
+      "delivery"
+    ]
+  },
+  {
+    "id": "pack-game-showcase",
+    "suite": "extension-packs",
+    "capability": "adaptive-game-score",
+    "measurement": "artifact-semantic",
+    "hardGate": false,
+    "source": "examples/packs/adaptive-game-score/frozen-relay/README.md",
+    "artifactStatus": "pending",
+    "rubric": "adaptive-game-score",
+    "criteria": [
+      "loops and layers work as a coherent adaptive set"
+    ],
+    "forbid": [
+      "audible-loop-seam",
+      "incompatible-layer-harmony"
+    ],
+    "axes": [
+      "pack-fidelity",
+      "creative-quality",
+      "delivery"
+    ]
+  },
+  {
+    "id": "pack-brand-variants",
+    "suite": "extension-packs",
+    "capability": "premium-brand-music",
+    "measurement": "agent",
+    "hardGate": true,
+    "source": "examples/packs/premium-brand-music/aperture-one/README.md",
+    "criteria": [
+      "derives exact-duration variants from one approved identity",
+      "preserves mnemonic across variants"
+    ],
+    "forbid": [
+      "independent-unrelated-variant-generation"
+    ],
+    "axes": [
+      "preservation",
+      "delivery",
+      "pack-fidelity"
+    ]
+  },
+  {
+    "id": "pack-brand-showcase",
+    "suite": "extension-packs",
+    "capability": "premium-brand-music",
+    "measurement": "artifact-semantic",
+    "hardGate": false,
+    "source": "examples/packs/premium-brand-music/aperture-one/README.md",
+    "artifactStatus": "pending",
+    "rubric": "premium-brand-music",
+    "criteria": [
+      "mnemonic and sonic identity survive all duration variants"
+    ],
+    "forbid": [
+      "identity-drift-between-variants",
+      "incorrect-duration"
+    ],
+    "axes": [
+      "pack-fidelity",
+      "creative-quality",
+      "preservation",
+      "delivery"
+    ]
+  },
+  {
+    "id": "pack-author-adapt-existing",
+    "suite": "pack-authoring",
+    "capability": "overlap-control",
+    "measurement": "agent",
+    "hardGate": true,
+    "criteria": [
+      "recommends adapting melodic-techno-club-track when only harmony/density differs",
+      "does not create redundant pack"
+    ],
+    "forbid": [
+      "unnecessary-new-pack"
+    ],
+    "axes": [
+      "boundary",
+      "scope"
+    ]
+  },
+  {
+    "id": "pack-author-new-grammar",
+    "suite": "pack-authoring",
+    "capability": "new-pack-justification",
+    "measurement": "agent",
+    "hardGate": true,
+    "criteria": [
+      "new pack is justified by materially different production grammar",
+      "pack remains one coherent installed skill"
+    ],
+    "forbid": [
+      "genre-label-only-pack"
+    ],
+    "axes": [
+      "boundary",
+      "pack-author-quality"
+    ]
+  },
+  {
+    "id": "pack-author-operational-profile",
+    "suite": "pack-authoring",
+    "capability": "operational-specificity",
+    "measurement": "agent",
+    "hardGate": true,
+    "criteria": [
+      "translates labels into arrangement/production/delivery/evaluation behaviour"
+    ],
+    "forbid": [
+      "style-label-without-operational-rules"
+    ],
+    "axes": [
+      "pack-author-quality"
+    ]
+  },
+  {
+    "id": "pack-author-showcase-contract",
+    "suite": "pack-authoring",
+    "capability": "showcase-contract",
+    "measurement": "deterministic",
+    "hardGate": true,
+    "criteria": [
+      "every catalogue pack has a showcase README with a full fenced generation prompt"
+    ],
+    "forbid": [
+      "missing-showcase-prompt"
+    ],
+    "axes": [
+      "delivery"
+    ]
+  },
+  {
+    "id": "pack-author-living-artist-boundary",
+    "suite": "pack-authoring",
+    "capability": "boundary-safety",
+    "measurement": "agent",
+    "hardGate": true,
+    "criteria": [
+      "rejects a creator-name-only imitation pack",
+      "may translate request into general operational traits where appropriate"
+    ],
+    "forbid": [
+      "artist-imitation-pack"
+    ],
+    "axes": [
+      "boundary"
+    ]
+  },
+  {
+    "id": "delivery-native-stem-semantics",
+    "suite": "technical-delivery",
+    "capability": "stem-provenance",
+    "measurement": "deterministic",
+    "hardGate": true,
+    "criteria": [
+      "native stem declarations require genuine multiple production outputs and compatible provenance"
+    ],
+    "forbid": [
+      "separation-as-native-stems"
+    ],
+    "axes": [
+      "delivery",
+      "boundary"
+    ]
+  },
+  {
+    "id": "delivery-exact-duration-brand-variants",
+    "suite": "technical-delivery",
+    "capability": "duration",
+    "measurement": "artifact-semantic",
+    "hardGate": true,
+    "source": "examples/packs/premium-brand-music/aperture-one/README.md",
+    "artifactStatus": "pending",
+    "criteria": [
+      "declared duration variants meet their exact duration contract"
+    ],
+    "forbid": [
+      "duration-drift"
+    ],
+    "axes": [
+      "delivery"
+    ]
+  },
+  {
+    "id": "handoff-video-timing-boundary",
+    "suite": "cross-domain-handoffs",
+    "capability": "video-handoff",
+    "measurement": "agent",
+    "hardGate": true,
+    "source": "examples/level-5-last-train-home/README.md",
+    "criteria": [
+      "consumes picture/timing context and produces music timing/delivery artifacts",
+      "does not absorb video editing or shot production"
+    ],
+    "forbid": [
+      "video-production-ownership"
+    ],
+    "axes": [
+      "boundary",
+      "delivery"
+    ]
+  },
+  {
+    "id": "handoff-game-runtime-boundary",
+    "suite": "cross-domain-handoffs",
+    "capability": "game-handoff",
+    "measurement": "agent",
+    "hardGate": true,
+    "source": "examples/level-5-checkpoint/README.md",
+    "criteria": [
+      "produces loop/layer/state/stinger assets and runtime metadata",
+      "does not implement game runtime or gameplay systems"
+    ],
+    "forbid": [
+      "game-runtime-implementation"
+    ],
+    "axes": [
+      "boundary",
+      "delivery"
+    ]
+  }
+]

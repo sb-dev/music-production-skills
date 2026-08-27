@@ -20,6 +20,23 @@ Creative evaluation can operate from supplied artifacts and host reasoning witho
 
 Technical audio QC helpers require Node.js 22+, `ffmpeg`, and `ffprobe`.
 
+## Optional customisation pack
+
+This skill remains fully usable without a customisation pack.
+
+When a selected peer music customisation pack is available, evaluate with this precedence:
+
+```text
+1. explicit user/project requirements
+2. approved and locked artifact decisions
+3. selected customisation-pack criteria
+4. music-evaluate defaults
+```
+
+Use pack `preserve`, `do_not_penalise`, and `reject` guidance only where relevant to the artifact being evaluated. Intentional pack traits may change the quality target, but they never justify ignoring technical failures, preservation regressions, broken delivery requirements, or unrelated musical defects.
+
+Do not infer a pack when none was selected.
+
 ## Determine artifact and lifecycle
 
 Identify artifact type, workflow state, brief/criteria, parent artifact, requested refinement, decision states, and available evidence. Only apply criteria that the artifact can support.

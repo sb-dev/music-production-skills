@@ -30,6 +30,25 @@ If the peer skills are unavailable, report the missing execution dependency. Do 
 
 Deterministic local audio helpers require Node.js 22+, `ffmpeg`, and `ffprobe`.
 
+## Optional customisation pack
+
+This skill remains fully usable without a customisation pack.
+
+When a selected peer music customisation pack is available, use this precedence:
+
+```text
+1. explicit user/project instructions
+2. approved and locked music artifacts / decisions
+3. selected customisation pack
+4. music-produce defaults
+```
+
+Apply only relevant pack guidance to production realisation, instrumentation/timbre, performance/vocal direction, mix priorities, delivery variants, and use-context requirements.
+
+The pack does not own provider execution. Replicate discovery, comparison, execution, provenance, and fallback behaviour remain governed by this skill and the official Replicate peer skills.
+
+A pack must not reopen locked music or force unsupported outputs such as genuine stems when the production does not contain them.
+
 ## Inputs
 
 Use available music brief, reference analysis, composition, arrangement, existing demo/audio, decision states, delivery requirements, budget, and optional pinned model. Do not require every artifact for simple fast-path tasks.

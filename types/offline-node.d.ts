@@ -9,3 +9,5 @@ declare module "node:child_process"{interface Stream{setEncoding(enc:string):voi
 declare module "node:test"{type Fn=()=>void|Promise<void>;export default function test(name:string,fn:Fn):void}
 declare module "node:assert/strict"{interface Assert{equal(a:unknown,b:unknown):void;deepEqual(a:unknown,b:unknown):void;ok(v:unknown):void;match(s:string,r:RegExp):void;throws(fn:()=>unknown,expected?:RegExp):void;doesNotThrow(fn:()=>unknown):void}const assert:Assert;export default assert}
 declare module "@tonejs/midi"{export class Midi{constructor(data?:Uint8Array);duration:number;header:{tempos:Array<{bpm:number}>};tracks:Array<{notes:Array<{midi:number}>,addNote(v:any):void}>;addTrack():{notes:Array<{midi:number}>,addNote(v:any):void};toArray():Uint8Array}}
+
+declare module "node:crypto"{interface Hash{update(data:any):Hash;digest(encoding:"hex"):string}export function createHash(name:string):Hash}

@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "status": "UNMEASURED",
+  "repositoryRevision": null,
+  "reviewer": null,
+  "repeatCount": null,
+  "results": [],
+  "notes": [
+    "No semantic or provider-backed quality score has been measured yet.",
+    "Create the first baseline only after canonical fixtures or real showcase outputs exist and repeated review has been collected."
+  ]
+}

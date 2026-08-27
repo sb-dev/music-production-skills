@@ -143,6 +143,8 @@ User / Upstream Project
         ↓
 Music Production Skill
         ↓
+Bounded Production Command
+        ↓
 Music Production Workflow
         ↓
 Approved / Draft Artifacts
@@ -236,6 +238,138 @@ Responsibilities:
 - identify the responsible production stage;
 - recommend the smallest corrective action;
 - produce persistent evaluation reports.
+
+---
+
+## 7.1 Optional Customisation-Pack Extension
+
+Music Production Skills may consume optional peer customisation packs that define reusable format, use-context, genre, production-language, performance/vocal and delivery guidance.
+
+```text
+explicit instructions
+    ↓
+approved / locked music decisions
+    ↓
+selected customisation pack
+    ↓
+core Music Production Skills defaults
+```
+
+The core skills remain fully usable without a pack. A pack changes production defaults and pack-aware evaluation; it does not replace a core skill, own provider execution, or silently reopen approved work.
+
+The separate `05-customisation-packs-spec.md` owns the detailed pack contract and initial catalogue.
+
+---
+
+### 7.4 `music-pack-author` (optional authoring support)
+
+Creates and adapts reusable Music Production customisation packs, behavioural evals and canonical showcase prompts. It is deliberately outside the three-skill production runtime and activates only when the user is authoring reusable pack behaviour.
+
+## 7.5 Internal Command Layer
+
+The installable skills remain the user-facing capability boundary. Each skill may decompose its behaviour into **bounded production commands** that are local to that skill.
+
+```text
+user request
+    ↓
+Agent Skill
+    ↓
+command selection / orchestration
+    ↓
+bounded production command
+    ↓
+artifacts / provider skills / deterministic tools
+```
+
+A command is a testable production operation, not another Agent Skill. Commands are not independently installed and are not automatically exposed as slash commands or CLI commands.
+
+Commands exist to make behaviour observable and falsifiable at a smaller scope than a whole skill. They must represent domain operations rather than low-level implementation mechanics.
+
+Good command boundaries include:
+
+```text
+interpret a brief
+draft musical material
+select material
+arrange
+resolve an execution path
+produce a demo
+refine a region
+verify preservation
+route a failure
+```
+
+Do not create commands for implementation details such as:
+
+```text
+read JSON
+call Replicate
+run FFmpeg
+write a file
+parse YAML
+calculate duration
+```
+
+Those remain tools or implementation functions behind production commands.
+
+### `music-compose` command set
+
+```text
+interpret-brief
+draft-material
+select-material
+develop-composition
+arrange
+refine-composition
+prepare-production
+```
+
+### `music-produce` command set
+
+```text
+plan-production
+resolve-execution
+produce-demo
+produce-final
+refine-region
+finish-audio
+prepare-delivery
+```
+
+### `music-evaluate` command set
+
+```text
+inspect
+compare
+evaluate-draft
+evaluate-refinement
+evaluate-final
+verify-preservation
+route-failure
+```
+
+### `music-pack-author` command set
+
+```text
+assess-pack-need
+define-profile
+author-pack
+create-showcase
+validate-pack
+catalogue-pack
+```
+
+The exact command selected for a request is part of skill behaviour. A skill can therefore fail in two distinct ways:
+
+```text
+wrong command selected
+→ orchestration failure
+
+right command selected, wrong behaviour
+→ command-contract failure
+```
+
+Command decomposition must not weaken the existing rules for cheapest-sufficient representation, explicit selection/approval/locking, preservation, smallest-unit repair, provider boundaries, or pack precedence.
 
 ---
 
@@ -689,13 +823,15 @@ Implement vertically:
 
 ```text
 1. artifact metadata + lifecycle/provenance
-2. music-compose structured/MIDI drafting
-3. music-evaluate structural + deterministic checks
-4. music-produce Replicate demo generation
-5. selection + locked-decision preservation
-6. targeted refinement
-7. final technical QC + evaluation
-8. realistic end-to-end example
+2. skill-local command contracts for the three core production skills
+3. music-compose structured/MIDI drafting through command contracts
+4. music-evaluate structural + deterministic checks through command contracts
+5. music-produce Replicate demo generation through command contracts
+6. selection + locked-decision preservation
+7. targeted refinement
+8. command-level + skill-orchestration evals
+9. final technical QC + evaluation
+10. realistic end-to-end example
 ```
 
 The first complete vertical slice must prove:
@@ -753,8 +889,12 @@ The system is correctly designed when:
 15. stems are only labelled as stems when they are genuine production stems or explicitly identified separation outputs;
 16. cross-project composition happens through artifacts;
 17. deferred architecture remains deferred until production evidence justifies it;
-18. testing and benchmarks can detect the project's declared defect classes without requiring a full production run for every failure.
+18. testing and benchmarks can detect the project's declared defect classes without requiring a full production run for every failure;
+19. optional customisation packs specialise production behaviour without becoming required dependencies or overriding explicit/approved decisions;
+20. skills may decompose into bounded local commands without creating additional installable skills;
+21. command contracts represent domain production operations rather than implementation mechanics;
+22. command selection and command execution can be evaluated independently.
 
 ---
 
-**Music Production Skills — Creative Skills System Specification v2**
+**Music Production Skills — Creative Skills System Specification v5**

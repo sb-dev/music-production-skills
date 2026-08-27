@@ -25,3 +25,7 @@ selectionSources:
 ```
 
 After selection, explicitly decide whether each choice is merely selected, approved, or locked.
+
+`assets/selection.example.yaml` shows the resulting envelope: `decisionState: selected`, every
+candidate draft retained in `parents`, and `selectionSources` recording which component came from
+which draft.

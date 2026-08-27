@@ -1,6 +1,6 @@
 # Music Production Skills
 
-![Video Production Skills](hero.png)
+![Music Production Skills](hero.png)
 
 **Direct AI music productions, not isolated generations.**
 
@@ -77,41 +77,40 @@ npx skills add <org>/music-production-skills --global
 
 See [Installation](docs/installation.md) for selective installation, runtime dependencies, update commands and the Stage 13 validation contract.
 
-## Quick start — Hook to Demo
+## Quick start — Night Drive
 
-Start with one musical decision and learn the core production loop before asking for a finished track.
+Start with one musical direction and learn the core loop before introducing alternative sets or full-track production.
 
 ```text
-Use music-compose to develop a 90-second melancholic electronic instrumental for a reflective closing montage.
+Use music-compose to create a 75-second synthwave instrumental demo called "Night Drive".
 
-Create three materially different chorus-hook ideas.
+The piece should feel nocturnal, focused and slightly nostalgic without becoming triumphant or cinematic.
 
 Requirements:
-- Duration: 90 seconds
-- Mood: reflective, nocturnal, slightly hopeful
-- Tempo: around 100 BPM
+- Duration: about 75 seconds
+- Genre: synthwave / electronic instrumental
+- Tempo: 102 BPM
 - Meter: 4/4
-- Palette: soft synth, restrained bass, sparse electronic drums
-- Hook: memorable without sounding triumphant
-- Structure: begin sparse and intimate, then build into one clear final section
+- Tonal centre: D minor
+- Core palette: analogue-style polysynth, restrained arpeggio, warm bass, electronic drums
+- Main idea: one memorable four- or eight-bar synth motif
+- Structure: sparse opening → groove established → stronger final section
 - Vocals: none
 
 Workflow:
-- Keep the first drafts cheap enough to compare quickly
-- State what musical question each hook is testing
-- Select the strongest melody and the strongest groove independently if they come from different drafts
-- Develop the selected material into a concise arrangement
-- Treat selection as distinct from approval
-- Ask for approval before committing to expensive full-track generation
-- Create only a short demo when audio is needed to validate production direction
-- Run music-evaluate before committing to final production
+- Turn the brief into one concise composition direction
+- Develop the core motif using text, notes or MIDI before generating full audio
+- Build a simple arrangement around that motif
+- Use the cheapest representation that can resolve each musical decision
+- Create a short audio demo only when the composition and arrangement are coherent enough to test together
+- Run music-evaluate on the demo before doing any higher-fidelity production
 
 What to optimise for:
-- melodic identity
-- clear contrast between sections
-- a coherent energy arc
-- economical arrangement
-- preservation of selected material
+- a motif that is recognisable after one listen
+- clear sectional contrast without adding unnecessary parts
+- a bass line that supports rather than competes with the motif
+- a controlled energy rise into the final section
+- an arrangement that still works when stripped back
 ```
 
 A small composition/demo project should stay small:
@@ -119,9 +118,7 @@ A small composition/demo project should stay small:
 ```text
 production/
 ├── brief.md
-├── composition/
-│   ├── drafts/
-│   └── selected.yaml
+├── composition.yaml
 ├── arrangement.yaml
 ├── audio/
 └── evaluations/
@@ -130,89 +127,78 @@ production/
 The important behaviour is:
 
 ```text
-cheap checkpoint → select → approve → produce → evaluate → refine only what failed
+cheap representation → coherent composition → short demo → evaluate before increasing fidelity
 ```
 
-See [Hook to Demo](examples/hook-to-demo/).
+See [Night Drive](examples/level-1-night-drive/).
 
 ## Learn by producing
 
-Progress through increasingly demanding production problems. Each example adds a real music-production responsibility rather than another abstraction.
+Progress through increasingly demanding music-production responsibilities. Each level contains three different genres so the workflow is tested against different musical structures rather than one house style.
 
-### Level 1 — Explore before producing
+### Level 1 — Controlled output
 
-**Hook to Demo**
+**Brief → composition → short demo**
 
-Learn cheap composition drafts, meaningful alternatives, component-level selection and the point at which an audio demo becomes useful.
+Learn to resolve one musical direction at low cost before adding selection machinery or committing to full production.
 
-```text
-brief
-→ hook alternatives
-→ component selection
-→ arrangement
-→ short demo
-```
+| Example | Genre | Production challenge |
+|---|---|---|
+| **[Night Drive](examples/level-1-night-drive/)** | Synthwave / electronic instrumental | Build a memorable motif and energy arc with symbolic/MIDI work before audio |
+| **[Sunday Static](examples/level-1-sunday-static/)** | Neo-soul / R&B | Make harmony, pocket and topline work together in a sparse vocal sketch |
+| **[Northbound](examples/level-1-northbound/)** | Indie folk | Prove a refrain and acoustic arrangement before production polish |
 
-See [examples/hook-to-demo](examples/hook-to-demo/).
+### Level 2 — Selection and preservation
 
-### Level 2 — Produce a complete track
+**Alternatives → component selection → approval/locking → refined demo**
 
-**Compose and Produce**
+Learn meaningful alternatives, component-level selection, explicit decision state and preservation through refinement.
 
-Learn the complete vertical workflow from composition through Replicate-backed production and technical QC.
+| Example | Genre | Production challenge |
+|---|---|---|
+| **[Concrete Halo](examples/level-2-concrete-halo/)** | Boom-bap hip-hop | Combine the strongest groove and musical motif from different draft directions |
+| **[Soft Collapse](examples/level-2-soft-collapse/)** | Dream pop / shoegaze | Compare chorus treatments while preserving the same underlying song |
+| **[High Water](examples/level-2-high-water/)** | Blues / roots rock | Select refrain and rhythm feel without rewriting approved lyric/harmony |
 
-```text
-brief
-→ composition drafts
-→ selection
-→ approved composition
-→ arrangement
-→ demo
-→ evaluation
-→ targeted refinement
-→ final production
-→ QC
-```
+### Level 3 — Full production
 
-See [examples/compose-and-produce](examples/compose-and-produce/).
+**Approved composition + arrangement → production → QC → final evaluation**
 
-### Level 3 — Change one thing without losing the track
+Learn the complete production loop, Replicate-backed execution, targeted refinement and technical delivery checks.
 
-**Preserve and Refine**
+| Example | Genre | Production challenge |
+|---|---|---|
+| **[Low Orbit](examples/level-3-low-orbit/)** | Melodic techno | Carry one motif through a full club-oriented energy arc without over-arranging |
+| **[Half Light](examples/level-3-half-light/)** | Alternative R&B | Preserve exact lyrics and topline through a complete vocal production |
+| **[Static Summer](examples/level-3-static-summer/)** | Indie rock / dream rock | Keep band roles, vocal readability and dynamics coherent from demo to final |
 
-Learn explicit decision state and bounded refinement.
+### Level 4 — Repair workflow
 
-```text
-approved / locked
-├── melody
-├── lyrics
-└── structure
+**Existing production → local defect → targeted repair → regression evaluation**
 
-open
-└── drum production
-```
+Learn to diagnose the owning layer first and repair the smallest unit that can actually solve the defect.
 
-The task succeeds only if the production changes while approved musical identity survives.
+| Example | Genre | Production challenge |
+|---|---|---|
+| **[Redline](examples/level-4-redline/)** | Drum & bass | Diagnose a weak second drop and repair only the responsible section |
+| **[No Reply](examples/level-4-no-reply/)** | Alternative pop / R&B | Restore one mutated lyric/vocal phrase without regenerating the chorus |
+| **[Winter Road](examples/level-4-winter-road/)** | Indie folk | Repair an audible edit boundary without reopening an approved performance |
 
-See [examples/preserve-and-refine](examples/preserve-and-refine/).
+### Level 5 — Cross-domain production
 
-### Level 4 — Diagnose and repair
+**Upstream creative context → music brief → production → downstream handoff**
 
-**Evaluate and Repair**
+Learn to consume other Creative Production Skills artifacts while keeping Music responsible only for music composition, production and delivery.
 
-Learn to route a defect to the stage that owns it and repair the smallest affected unit.
+| Example | Genre | Production challenge |
+|---|---|---|
+| **[After Hours](examples/level-5-after-hours/)** | House | Turn an advertising brief into one musical identity across full, 60s, 15s and 6s variants |
+| **[Last Train Home](examples/level-5-last-train-home/)** | Ambient electronic | Compose against a locked video edit and hand back timing-aware music artifacts |
+| **[Checkpoint](examples/level-5-checkpoint/)** | Chiptune / synthwave | Produce a loopable game theme and motif-derived sting without adding a game-audio runtime |
 
-```text
-existing production
-→ diagnose defect
-→ identify owning stage
-→ isolate region
-→ repair
-→ check edit boundaries
-→ verify preservation
-```
+Every example README contains the complete copyable prompt. Generated results, model choices, provenance and evaluation evidence should be added to the same example only after that production has actually been run.
 
-See [examples/evaluate-and-repair](examples/evaluate-and-repair/).
+See the [Examples index](examples/README.md).
 
 ## Project structure grows with the work
 
@@ -232,7 +218,7 @@ Add a repair workspace for the affected section, phrase or region. Reference the
 Add them only when the execution path actually produces them. Do not label source-separated estimates as native production stems.
 
 **Other creative domains contribute**  
-Compose through artifacts under `production/{advertising,narrative,video,music}` rather than creating shared runtime dependencies.
+Compose through artifacts under `production/{advertising,narrative,video,game,music}` rather than creating shared runtime dependencies.
 
 Keep the structure lean:
 
@@ -274,6 +260,37 @@ clipping or invalid media     → fail technical QC
 bad source mix                → route upstream, do not hide it in mastering
 ```
 
+
+### `music-pack-author`
+
+Create or adapt reusable extension packs, pack-aware evals and canonical showcase examples. It is an authoring/support skill, not part of the three-skill production runtime.
+
+## Customisation packs
+
+Music Production Skills remains fully usable without a customisation pack. Packs are optional peer Agent Skills that define a reusable production language across composition, production and evaluation.
+
+The recommended initial pack set is:
+
+- **`intimate-singer-songwriter-single`** — lyric, melody and natural vocal performance first
+- **`melodic-techno-club-track`** — loop evolution, club energy and kick/bass translation
+- **`cinematic-hybrid-score`** — spotting, sync, mockups, dialogue space and cue delivery
+- **`adaptive-game-score`** — loops, layers, states, transitions and stingers
+- **`premium-brand-music`** — immediate sonic identity, exact-duration cutdowns and brand variants
+
+The set deliberately spans different production grammars rather than five genre presets. Packs provide defaults and constraints, but explicit project instructions and approved or locked artifacts always take precedence.
+
+Browse the [Extension Pack Catalogue](docs/06-extension-pack-catalogue.md) for the initial packs and their canonical showcase prompts.
+
+Use the optional **`music-pack-author`** skill to create or adapt reusable packs. It checks the existing catalogue first, requires a production-grammar justification, and creates at least one showcase example with a full generation prompt.
+
+```bash
+npx skills add <org>/music-production-skills \
+  --skill music-pack-author \
+  --agent claude-code
+```
+
+See [Music Production Customisation Packs Specification](docs/05-customisation-packs-spec.md).
+
 ## Execution
 
 The skills decide **what music-production work is needed**. Existing tools execute it.
@@ -312,6 +329,14 @@ typecheck
 → deterministic benchmark
 → semantic transcript re-score when transcripts exist
 ```
+
+Inspect benchmark coverage without running paid generation:
+
+```bash
+npm run benchmark:report
+```
+
+The benchmark separates **agent behaviour**, **produced-artifact quality**, and **evaluation/repair quality**. Hard workflow invariants gate deterministically; generated music uses pack-aware ordinal creative rubrics plus technical/delivery checks rather than one opaque music-quality score. The initial semantic baseline remains `UNMEASURED` until real generated artifacts and repeated reviews exist.
 
 The local Skills CLI installation gate is intentionally separate:
 
@@ -358,12 +383,27 @@ Stage 12 configures installation. Stage 13 supplies the clean-project installati
 
 - [Testing and Benchmark Specification](docs/04-testing-and-benchmark-spec.md)
   - [Testing Layers](docs/04-testing-and-benchmark-spec.md#2-testing-layers)
-  - [Run Everything](docs/04-testing-and-benchmark-spec.md#6-run-everything)
-  - [Core Deterministic Checks](docs/04-testing-and-benchmark-spec.md#9-core-deterministic-checks)
-  - [Semantic Scoring Axes](docs/04-testing-and-benchmark-spec.md#15-semantic-scoring-axes)
-  - [Baseline Policy](docs/04-testing-and-benchmark-spec.md#20-baseline-policy)
-  - [Initial Semantic Benchmark Cases](docs/04-testing-and-benchmark-spec.md#21-initial-semantic-benchmark-cases)
-  - [Testing Acceptance Criteria](docs/04-testing-and-benchmark-spec.md#28-testing-acceptance-criteria)
+  - [Prerequisites](docs/04-testing-and-benchmark-spec.md#5-prerequisites)
+  - [Quality Model](docs/04-testing-and-benchmark-spec.md#7-quality-model)
+  - [Benchmark Layers](docs/04-testing-and-benchmark-spec.md#8-benchmark-layers)
+  - [Release Gates](docs/04-testing-and-benchmark-spec.md#9-release-gates)
+  - [Capability Coverage](docs/04-testing-and-benchmark-spec.md#11-capability-coverage)
+  - [Public Example Regression Matrix](docs/04-testing-and-benchmark-spec.md#12-public-example-regression-matrix)
+  - [Extension Pack Quality Benchmark](docs/04-testing-and-benchmark-spec.md#13-extension-pack-quality-benchmark)
+  - [`music-pack-author` Benchmark](docs/04-testing-and-benchmark-spec.md#14-music-pack-author-benchmark)
+  - [Benchmark Runbook](docs/04-testing-and-benchmark-spec.md#22-benchmark-runbook)
+  - [Testing Acceptance Criteria](docs/04-testing-and-benchmark-spec.md#29-testing-acceptance-criteria)
+
+
+- [Music Production Customisation Packs Specification](docs/05-customisation-packs-spec.md)
+  - [Core Model](docs/05-customisation-packs-spec.md#4-core-model)
+  - [Pack Dimensions](docs/05-customisation-packs-spec.md#5-pack-dimensions)
+  - [Recommended Initial Pack Set](docs/05-customisation-packs-spec.md#13-recommended-initial-pack-set)
+  - [Evals](docs/05-customisation-packs-spec.md#18-evals)
+  - [Initial Implementation Order](docs/05-customisation-packs-spec.md#22-initial-implementation-order)
+
+- [Extension Pack Catalogue](docs/06-extension-pack-catalogue.md)
+  - the five initial packs, their production profiles, and the canonical showcase generation prompts
 
 ### Installation and project guidance
 

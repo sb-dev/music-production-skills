@@ -17,7 +17,9 @@
     "smoke:install": "node --experimental-strip-types tools/smoke-install.ts",
     "test:smoke": "npm run smoke:install",
     "check": "npm run typecheck && npm run validate && npm run test:unit && npm run test:stages && npm run test:evals && npm run test:benchmark && npm run test:semantic:rescore",
-    "test": "npm run check && npm run test:smoke"
+    "test": "npm run check && npm run test:smoke",
+    "benchmark:report": "node --experimental-strip-types tools/run-benchmark.ts --report",
+    "benchmark:prompts": "node --experimental-strip-types tools/run-benchmark.ts --print-prompts"
   },
   "devDependencies": {
     "typescript": "^5.9.0"
