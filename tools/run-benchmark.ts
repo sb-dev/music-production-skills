@@ -1,5 +1,5 @@
 import { readdir, readFile } from "node:fs/promises";
-import { join } from "node:path";
+import { isAbsolute, join, relative } from "node:path";
 import { caseQuestionHash, fileSha256, majority, parseBenchmarkCases, parseSemanticTranscript, type SemanticTranscript } from "./benchmark.ts";
 
 const root = process.cwd();
@@ -82,8 +82,14 @@ if (flags.has("--rescore")) {
     if (!c) { console.error(`STALE TRANSCRIPT ${file}: unknown case ${t.caseId}`); process.exit(1); }
     if (t.questionHash !== caseQuestionHash(c)) { console.error(`STALE TRANSCRIPT ${file}: question identity changed`); process.exit(1); }
     for (const [path, expectedHash] of Object.entries(t.artifactHashes)) {
+      const resolved = join(root, path);
+      const inside = relative(root, resolved);
+      if (isAbsolute(path) || inside.startsWith("..") || isAbsolute(inside)) {
+        console.error(`INVALID TRANSCRIPT ${file}: artifact path escapes the repository: ${path}`);
+        process.exit(1);
+      }
       try {
-        const actual = await fileSha256(join(root, path));
+        const actual = await fileSha256(resolved);
         if (actual !== expectedHash) { console.error(`STALE TRANSCRIPT ${file}: artifact hash changed for ${path}`); process.exit(1); }
       } catch { console.error(`STALE TRANSCRIPT ${file}: missing artifact ${path}`); process.exit(1); }
     }
