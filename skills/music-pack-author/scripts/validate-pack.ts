@@ -31,6 +31,24 @@ if (await exists(join(root, "evals/evals.json"))) {
     else {
       const cats = new Set(value.map((x: { category?: string }) => x.category));
       for (const cat of ["normal", "draft", "refinement", "final", "boundary"]) if (!cats.has(cat)) errors.push(`Missing ${cat} eval`);
+      // A case must carry real content, not just a category: five `{category}` stubs
+      // would otherwise satisfy the check above. Mirrors what parseEvalCases enforces
+      // for the core skills' eval files.
+      value.forEach((item: unknown, index: number) => {
+        const label = `eval ${index}`;
+        if (typeof item !== "object" || item === null || Array.isArray(item)) { errors.push(`${label} must be an object`); return; }
+        const eval_ = item as { name?: unknown; input?: unknown; expect?: unknown; forbid?: unknown };
+        const named = typeof eval_.name === "string" && eval_.name.length > 0;
+        if (!named) errors.push(`${label} missing name`);
+        const where = named ? `eval ${String(eval_.name)}` : label;
+        if (typeof eval_.input !== "string" || eval_.input.length === 0) errors.push(`${where} missing input`);
+        if (!Array.isArray(eval_.expect) || eval_.expect.length === 0 || !eval_.expect.every((x) => typeof x === "string" && x.length > 0)) {
+          errors.push(`${where} needs a non-empty expect list of observable behaviours`);
+        }
+        if (eval_.forbid !== undefined && (!Array.isArray(eval_.forbid) || !eval_.forbid.every((x) => typeof x === "string" && x.length > 0))) {
+          errors.push(`${where} has an invalid forbid list`);
+        }
+      });
     }
   } catch { errors.push("evals/evals.json is invalid JSON"); }
 }
