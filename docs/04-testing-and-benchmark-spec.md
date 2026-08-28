@@ -940,7 +940,9 @@ The closed pass organises and verifies. It does not replace the open pass.
 
 ## 18. Semantic Axes
 
-Report these separately:
+Report these separately. This is a closed vocabulary: it is declared as
+`semanticAxes` in `tests/benchmark/rubrics.json`, and every `axes` entry in
+`taxonomy.json` must appear in it.
 
 ### Detection
 
@@ -970,13 +972,26 @@ Was the recommended fix limited to the smallest justified unit?
 
 Did the reviewer recognise whether locked material survived?
 
+### Boundary
+
+Did the agent hold the declared limit rather than exceeding, faking, or silently
+substituting it? Covers refusing out-of-scope work, honouring a pinned model, and
+declining to invent artifacts it did not produce.
+
 ### Pack fidelity
 
 Did the production preserve the selected pack's operational characteristics rather than merely resemble its genre label?
 
 ### Creative quality
 
-Use the ordinal rubric only on dimensions applicable to the artifact.
+Use the ordinal rubric only on dimensions applicable to the artifact. A case carrying
+this axis names its dimension set through `rubric`, resolved against `rubrics.json`;
+cases without this axis carry no `rubric`.
+
+### Pack author quality
+
+Did an authored pack meet the authoring rubric in section 14 — operational rules
+rather than genre labels, real core-skill integration, and a usable showcase?
 
 ### Delivery
 

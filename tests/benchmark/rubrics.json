@@ -5,6 +5,18 @@
     "acceptable",
     "strong"
   ],
+  "semanticAxes": [
+    "detection",
+    "precision",
+    "routing",
+    "scope",
+    "preservation",
+    "boundary",
+    "pack-fidelity",
+    "creative-quality",
+    "pack-author-quality",
+    "delivery"
+  ],
   "generalMusic": [
     "intent-fit",
     "composition",
