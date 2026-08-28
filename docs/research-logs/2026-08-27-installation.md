@@ -216,7 +216,7 @@ production/
 → music artifacts
 ```
 
-See [`consumer-projects.md`](consumer-projects.md) for progressive workspace examples.
+See [`consumer-projects.md`](2026-08-27-consumer-projects.md) for progressive workspace examples.
 
 ## Local-source validation contract
 

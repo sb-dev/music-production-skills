@@ -917,7 +917,7 @@ Add a concise section such as:
 ```markdown
 ## Extension packs
 
-Browse ready-made music-production formats, use contexts and production grammars in the [Extension Pack Catalogue](extension-packs/README.md).
+Browse ready-made music-production formats, use contexts and production grammars in the [Extension Pack Catalogue](../06-extension-pack-catalogue.md).
 ```
 
 Optionally show the five initial pack names if that remains concise.

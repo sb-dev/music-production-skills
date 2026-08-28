@@ -4,7 +4,7 @@ import { parseEvalCases } from "./contracts.ts";
 import { parseBenchmarkCases } from "./benchmark.ts";
 
 export const expectedSkills = ["music-compose", "music-produce", "music-evaluate", "music-pack-author"] as const;
-export const requiredDocs = ["01-creative-skills-system-spec.md","02-creative-skills-workflows-and-artifacts-spec.md","03-creative-skills-repository-and-contracts-spec.md","04-testing-and-benchmark-spec.md","05-customisation-packs-spec.md","06-extension-pack-catalogue.md","extraction-candidates.md","installation.md"] as const;
+export const requiredDocs = ["01-creative-skills-system-spec.md","02-creative-skills-workflows-and-artifacts-spec.md","03-creative-skills-repository-and-contracts-spec.md","04-testing-and-benchmark-spec.md","05-customisation-packs-spec.md","06-extension-pack-catalogue.md"] as const;
 export interface ValidationResult { readonly errors: readonly string[]; readonly warnings: readonly string[]; readonly stats: { readonly skills: number; readonly evalCases: number; readonly executableEvalCases: number } }
 async function exists(path: string): Promise<boolean> { try { await stat(path); return true; } catch { return false; } }
 function parseFrontmatter(markdown: string): {name:string;description:string} {

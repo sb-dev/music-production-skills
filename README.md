@@ -75,7 +75,7 @@ Project-local installation is the default. Global installation is optional:
 npx skills add <org>/music-production-skills --global
 ```
 
-See [Installation](docs/installation.md) for selective installation, runtime dependencies, update commands and the Stage 13 validation contract.
+See [Installation](docs/research-logs/2026-08-27-installation.md) for selective installation, runtime dependencies, update commands and the Stage 13 validation contract.
 
 ## Quick start — Night Drive
 
@@ -229,7 +229,7 @@ Keep the structure lean:
 - masters, delivery packages and optional stems remain distinct artifacts;
 - do not introduce a DAW, provider router or artifact database until a real workflow requires one.
 
-See [Consumer Project Structure](docs/consumer-projects.md).
+See [Consumer Project Structure](docs/research-logs/2026-08-27-consumer-projects.md).
 
 ## Skills
 
@@ -407,9 +407,9 @@ Stage 12 configures installation. Stage 13 supplies the clean-project installati
 
 ### Installation and project guidance
 
-- [Installation](docs/installation.md)
-- [Consumer Project Structure](docs/consumer-projects.md)
-- [Extraction Candidates](docs/extraction-candidates.md)
+- [Installation](docs/research-logs/2026-08-27-installation.md)
+- [Consumer Project Structure](docs/research-logs/2026-08-27-consumer-projects.md)
+- [Extraction Candidates](docs/research-logs/2026-08-27-extraction-candidates.md)
 
 ## Project boundary
 
