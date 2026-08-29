@@ -65,5 +65,20 @@
     "forbid": [
       "claim separated estimates are native stems"
     ]
+  },
+  {
+    "name": "customisation-pack-brand-variants",
+    "category": "normal",
+    "input": "Use a premium-brand-music customisation pack to produce the approved sonic motif as a full version plus 15-second and 6-second variants.",
+    "expect": [
+      "pack delivery constraints applied",
+      "sonic motif preserved across variants",
+      "Replicate execution still routed through official peer skills"
+    ],
+    "forbid": [
+      "pack implements provider API",
+      "silently alter approved motif",
+      "claim unsupported stems"
+    ]
   }
 ]

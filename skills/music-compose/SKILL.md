@@ -32,6 +32,23 @@ MIDI helper scripts require Node.js 22+ plus the dependencies in this skill dire
 
 If composition work escalates to Replicate-backed audio generation, require the official `find-models`, `compare-models`, and `run-models` peer skills plus `REPLICATE_API_TOKEN`. Do not build or invoke a custom Replicate client as a substitute.
 
+## Optional customisation pack
+
+This skill remains fully usable without a customisation pack.
+
+When a selected peer music customisation pack is available, treat it as reusable production guidance with this precedence:
+
+```text
+1. explicit user/project instructions
+2. approved and locked music artifacts / decisions
+3. selected customisation pack
+4. music-compose defaults
+```
+
+Apply only pack guidance relevant to composition and arrangement, such as format, use context, genre, form, groove, instrumentation, production-language constraints that affect arrangement, draft strategy, and selection criteria.
+
+A pack may narrow the creative search space but must not silently choose or reopen high-impact musical decisions. Do not require a pack for normal composition work.
+
 ## Determine the unresolved decision
 
 Before creating output, identify what is actually uncertain: melody, harmony, rhythm/groove, lyrics, hook, structure, arrangement, instrumentation, or energy progression.

@@ -8,6 +8,7 @@ It owns:
 
 - repository structure;
 - skill directories;
+- skill-local command contracts;
 - complete `SKILL.md` contracts;
 - references;
 - assets;
@@ -51,6 +52,14 @@ music-production-skills/
 │   ├── music-compose/
 │   │   ├── SKILL.md
 │   │   ├── package.json
+│   │   ├── commands/
+│   │   │   ├── interpret-brief.md
+│   │   │   ├── draft-material.md
+│   │   │   ├── select-material.md
+│   │   │   ├── develop-composition.md
+│   │   │   ├── arrange.md
+│   │   │   ├── refine-composition.md
+│   │   │   └── prepare-production.md
 │   │   ├── references/
 │   │   │   ├── composition.md
 │   │   │   ├── arrangement.md
@@ -59,7 +68,8 @@ music-production-skills/
 │   │   │   └── midi.md
 │   │   ├── assets/
 │   │   │   ├── composition.example.yaml
-│   │   │   └── arrangement.example.yaml
+│   │   │   ├── arrangement.example.yaml
+│   │   │   └── selection.example.yaml
 │   │   ├── scripts/
 │   │   │   ├── inspect-midi.ts
 │   │   │   ├── transpose-midi.ts
@@ -69,6 +79,14 @@ music-production-skills/
 │   │
 │   ├── music-produce/
 │   │   ├── SKILL.md
+│   │   ├── commands/
+│   │   │   ├── plan-production.md
+│   │   │   ├── resolve-execution.md
+│   │   │   ├── produce-demo.md
+│   │   │   ├── produce-final.md
+│   │   │   ├── refine-region.md
+│   │   │   ├── finish-audio.md
+│   │   │   └── prepare-delivery.md
 │   │   ├── references/
 │   │   │   ├── production-workflow.md
 │   │   │   ├── replicate-routing.md
@@ -85,41 +103,90 @@ music-production-skills/
 │   │   └── evals/
 │   │       └── evals.json
 │   │
-│   └── music-evaluate/
+│   ├── music-evaluate/
+│   │   ├── SKILL.md
+│   │   ├── commands/
+│   │   │   ├── inspect.md
+│   │   │   ├── compare.md
+│   │   │   ├── evaluate-draft.md
+│   │   │   ├── evaluate-refinement.md
+│   │   │   ├── evaluate-final.md
+│   │   │   ├── verify-preservation.md
+│   │   │   └── route-failure.md
+│   │   ├── references/
+│   │   │   ├── evaluation-lifecycle.md
+│   │   │   ├── composition-rubric.md
+│   │   │   ├── arrangement-rubric.md
+│   │   │   ├── production-rubric.md
+│   │   │   ├── preservation.md
+│   │   │   ├── technical-qc.md
+│   │   │   └── failure-routing.md
+│   │   ├── assets/
+│   │   │   ├── preservation.example.json
+│   │   │   └── evaluation-evidence.example.json
+│   │   ├── scripts/
+│   │   │   ├── preflight.ts
+│   │   │   ├── inspect-audio.ts
+│   │   │   ├── validate-lineage.ts
+│   │   │   ├── validate-preservation.ts
+│   │   │   └── generate-report.ts
+│   │   └── evals/
+│   │       └── evals.json
+│   │
+│   └── music-pack-author/
 │       ├── SKILL.md
+│       ├── commands/
+│       │   ├── assess-pack-need.md
+│       │   ├── define-profile.md
+│       │   ├── author-pack.md
+│       │   ├── create-showcase.md
+│       │   ├── validate-pack.md
+│       │   └── catalogue-pack.md
 │       ├── references/
-│       │   ├── evaluation-lifecycle.md
-│       │   ├── composition-rubric.md
-│       │   ├── arrangement-rubric.md
-│       │   ├── production-rubric.md
-│       │   ├── preservation.md
-│       │   ├── technical-qc.md
-│       │   └── failure-routing.md
+│       │   ├── pack-contract.md
+│       │   ├── authoring-workflow.md
+│       │   └── showcase-examples.md
+│       ├── assets/
+│       │   └── production-profile.example.yaml
 │       ├── scripts/
-│       │   ├── preflight.ts
-│       │   ├── inspect-audio.ts
-│       │   ├── validate-lineage.ts
-│       │   ├── validate-preservation.ts
-│       │   └── generate-report.ts
+│       │   └── validate-pack.ts
 │       └── evals/
 │           └── evals.json
 │
 ├── examples/
-│   ├── hook-to-demo/
-│   ├── compose-and-produce/
-│   ├── preserve-and-refine/
-│   └── evaluate-and-repair/
+│   ├── README.md
+│   ├── level-1-night-drive/
+│   ├── level-1-sunday-static/
+│   ├── level-1-northbound/
+│   ├── level-2-concrete-halo/
+│   ├── level-2-soft-collapse/
+│   ├── level-2-high-water/
+│   ├── level-3-low-orbit/
+│   ├── level-3-half-light/
+│   ├── level-3-static-summer/
+│   ├── level-4-redline/
+│   ├── level-4-no-reply/
+│   ├── level-4-winter-road/
+│   ├── level-5-after-hours/
+│   ├── level-5-last-train-home/
+│   └── level-5-checkpoint/
 │
 ├── tests/
 │   ├── fixtures/
 │   ├── unit/
 │   ├── stages/
 │   └── benchmark/
+│       ├── taxonomy.json
+│       ├── rubrics.json
+│       ├── example-matrix.json
+│       ├── baseline.json
+│       └── transcripts/
 │
 ├── tools/
 │   ├── validate-repository.ts
 │   ├── validate-production.ts
 │   ├── run-evals.ts
+│   ├── benchmark.ts
 │   └── run-benchmark.ts
 │
 └── .github/
@@ -132,7 +199,7 @@ Only create optional directories when they contain real material. The scaffold m
 
 ---
 
-## 3. Three Primary Specs + Testing Specification
+## 3. Three Primary Specs + Supplemental Specifications
 
 The repository preserves the family model of three primary engineering specifications:
 
@@ -142,13 +209,136 @@ The repository preserves the family model of three primary engineering specifica
 03 — how is behaviour packaged into Agent Skills?
 ```
 
-It also includes one supplemental normative operational specification:
+It also includes supplemental normative specifications:
 
 ```text
 04 — how do we prove the behaviour and prevent regressions?
+05 — how can optional customisation packs specialise music-production behaviour?
 ```
 
-`04-testing-and-benchmark-spec.md` is not a fourth primary production spec. It is the executable testing and benchmark runbook and complements rather than duplicates eval requirements in this specification.
+`04-testing-and-benchmark-spec.md` is the executable testing and benchmark runbook.
+
+`05-customisation-packs-spec.md` defines the optional customisation-pack extension layer. `06-extension-pack-catalogue.md` is its public catalogue and showcase-prompt surface. Neither makes packs mandatory runtime dependencies.
+
+---
+
+## 3A. Skill-Local Command Contracts
+
+The installable Agent Skill remains the public capability boundary. A skill may decompose its behaviour into bounded command contracts under:
+
+```text
+skills/<skill-name>/commands/<command-id>.md
+```
+
+Commands are packaged with their owning skill and are never installed independently. They are local runtime knowledge in the same sense as skill-local references.
+
+A command is a **production operation**, not a tool invocation or implementation function.
+
+### 4.1 Required command contract
+
+Each command file must define:
+
+```text
+command id
+purpose
+when it runs
+inputs
+preconditions
+outputs
+invariants
+failure / routing semantics
+forbidden behaviour
+dependencies
+evaluation hooks
+```
+
+Keep the contract concise. A command may link to skill-local references for detailed domain knowledge.
+
+### 4.2 Command orchestration
+
+`SKILL.md` owns command selection and sequencing. It must explain enough orchestration behaviour for the agent to choose the appropriate command without introducing a generic workflow engine.
+
+```text
+user request
+→ owning skill
+→ choose command
+→ execute command contract
+→ persist artifact/provenance
+→ choose next command only if required
+```
+
+A command may call deterministic scripts or peer provider skills as implementation capabilities, but the command contract stays provider/tool independent where the production behaviour is independent.
+
+### 4.3 Canonical command sets
+
+`music-compose`:
+
+```text
+interpret-brief
+draft-material
+select-material
+develop-composition
+arrange
+refine-composition
+prepare-production
+```
+
+`music-produce`:
+
+```text
+plan-production
+resolve-execution
+produce-demo
+produce-final
+refine-region
+finish-audio
+prepare-delivery
+```
+
+`music-evaluate`:
+
+```text
+inspect
+compare
+evaluate-draft
+evaluate-refinement
+evaluate-final
+verify-preservation
+route-failure
+```
+
+`music-pack-author`:
+
+```text
+assess-pack-need
+define-profile
+author-pack
+create-showcase
+validate-pack
+catalogue-pack
+```
+
+### 4.4 Command granularity rule
+
+Create a command only when the operation has a meaningful independent contract, failure mode or evaluation boundary.
+
+Do not create commands such as:
+
+```text
+call-replicate
+run-ffmpeg
+read-json
+write-yaml
+parse-midi
+```
+
+Those are implementation mechanics behind commands.
+
+Do not split one coherent production decision into multiple commands merely to increase test counts.
+
+### 4.5 Commands are not artifacts or lifecycle states
+
+Command execution uses the artifact and state model from Spec 02. It must not create parallel `command_result`, `repair_state`, or similar schemas unless an independent production artifact is later justified.
 
 ---
 
@@ -835,6 +1025,31 @@ Read as needed:
 
 ---
 
+## 14A. `music-pack-author/SKILL.md`
+
+`music-pack-author` is an optional authoring/support skill. It must be independently installable and self-contained.
+
+Minimum local resources:
+
+```text
+skills/music-pack-author/
+├── SKILL.md
+├── references/
+│   ├── pack-contract.md
+│   ├── authoring-workflow.md
+│   └── showcase-examples.md
+├── assets/
+│   └── production-profile.example.yaml
+├── scripts/
+│   └── validate-pack.ts
+└── evals/
+    └── evals.json
+```
+
+Its contract must require an overlap check, production-grammar justification, pack-aware evaluation, at least one showcase README with a complete generation prompt, and no fabricated generation results.
+
+It does not become a provider wrapper or a general Skill creator.
+
 ## 15. `music-evaluate` Deterministic Scripts
 
 ### `preflight.ts`
@@ -971,41 +1186,93 @@ The workflow must prove:
 
 ## 18. Examples
 
-Initial capability-led examples:
+Examples teach the five consumer-production levels with **three genre-distinct examples per level**. Each example README must contain the complete copyable production prompt. Generated artifacts and measured findings are added only after that production has actually run.
+
+### Level 1 — Controlled Output
 
 ```text
-examples/
-├── hook-to-demo/
-├── compose-and-produce/
-├── preserve-and-refine/
-└── evaluate-and-repair/
+Night Drive      — synthwave / electronic instrumental
+Sunday Static    — neo-soul / R&B
+Northbound       — indie folk
 ```
-
-### `hook-to-demo`
 
 Proves:
 
 ```text
 brief
-→ several hook ideas
-→ select
+→ composition
 → arrangement
-→ low-cost demo
+→ short demo
+→ evaluation
 ```
 
-### `compose-and-produce`
+### Level 2 — Selection and Preservation
 
-Proves the complete first vertical slice.
+```text
+Concrete Halo    — boom-bap hip-hop
+Soft Collapse    — dream pop / shoegaze
+High Water       — blues / roots rock
+```
 
-### `preserve-and-refine`
+Proves:
 
-Proves that approved melody/lyrics/structure survive a production-only change.
+```text
+draft alternatives
+→ component selection
+→ approval / locking
+→ refined demo
+→ preservation evaluation
+```
 
-### `evaluate-and-repair`
+### Level 3 — Full Production
 
-Seeds a local production defect, routes it to the owning stage/unit, repairs only that unit, and verifies the result.
+```text
+Low Orbit        — melodic techno
+Half Light       — alternative R&B
+Static Summer    — indie rock / dream rock
+```
 
-Avoid examples that demonstrate only one provider call.
+Proves the complete vertical production slice:
+
+```text
+approved composition + arrangement
+→ demo
+→ evaluation
+→ Replicate-backed production
+→ targeted refinement
+→ technical QC
+→ final evaluation
+```
+
+### Level 4 — Repair Workflow
+
+```text
+Redline          — drum & bass
+No Reply         — alternative pop / R&B
+Winter Road      — indie folk
+```
+
+Proves:
+
+```text
+existing production
+→ diagnose owning stage
+→ smallest-unit repair
+→ boundary / regression check
+→ preservation verification
+```
+
+### Level 5 — Cross-Domain Production
+
+```text
+After Hours      — house / advertising handoff
+Last Train Home  — ambient electronic / video handoff
+Checkpoint       — chiptune-synthwave / game-project handoff
+```
+
+Proves artifact composition across domains without shared runtime dependencies. Music Production Skills consumes upstream context, owns music decisions, and returns music artifacts such as approved masters, delivery variants, timing metadata, loop metadata, or genuine stems when they actually exist.
+
+Avoid examples that demonstrate only one provider call or differ only by genre label.
 
 ---
 
@@ -1125,10 +1392,27 @@ Inspect available Music Production Skills:
 npx skills add <org>/music-production-skills --list
 ```
 
-Install all Music Production Skills into the current project:
+Install every repository skill, including optional pack-authoring support:
 
 ```bash
 npx skills add <org>/music-production-skills
+```
+
+Install only the three core production skills:
+
+```bash
+npx skills add <org>/music-production-skills \
+  --skill music-compose \
+  --skill music-produce \
+  --skill music-evaluate
+```
+
+Install the optional pack-authoring support skill separately when needed:
+
+```bash
+npx skills add <org>/music-production-skills \
+  --skill music-pack-author \
+  --agent claude-code
 ```
 
 Install selected skills for Claude Code:
@@ -1180,7 +1464,7 @@ Useful current Skills CLI commands include:
 ```bash
 npx skills list
 npx skills update --project
-npx skills update music-compose music-produce music-evaluate --project --yes
+npx skills update music-compose music-produce music-evaluate music-pack-author --project --yes
 ```
 
 The CLI may maintain project installation metadata such as `skills-lock.json`. A consumer project may commit it when useful, but experimental lock restoration is not a core runtime or recovery dependency. Explicit `npx skills add ...` commands remain canonical.
@@ -1239,6 +1523,8 @@ Before publication verify:
 - required dependencies fail loudly when absent;
 - eval coverage is reported;
 - benchmark deterministic tier passes;
+- benchmark taxonomy, rubrics, example matrix, and baseline contracts validate;
+- benchmark case source paths resolve;
 - realistic end-to-end example works;
 - no repository-relative runtime reference breaks after selective installation.
 
@@ -1334,7 +1620,7 @@ Detailed methodology can move into guides later when real material exists.
 
 The repository contract is correct when:
 
-1. the three primary engineering specs and supplemental testing specification live directly under `/docs`;
+1. the three primary engineering specs plus supplemental testing and customisation-pack specifications live directly under `/docs`;
 2. `music-compose`, `music-produce`, and `music-evaluate` each have valid Agent Skills frontmatter;
 3. each skill installs independently with all runtime resources it needs;
 4. official Replicate skills remain the primary model execution layer;
@@ -1351,8 +1637,31 @@ The repository contract is correct when:
 15. examples demonstrate real production workflows rather than isolated API calls;
 16. consumer-project structure grows progressively rather than starting from an oversized canonical tree;
 17. semantic benchmark collection is opt-in and paid evidence is cached/retained where the benchmark design requires it;
-18. CI never reports a required but unexecuted check as passing;
-19. deferred architecture remains outside the bootstrap implementation unless Stage 10+ evidence changes the decision.
+18. benchmark coverage separates agent behaviour, produced-artifact quality, and evaluation/repair quality;
+19. every initial extension pack has agent-behaviour and artifact-semantic benchmark coverage;
+20. the 15 public examples remain a five-level, three-genre-per-level regression pool;
+21. benchmark questions and artifact bytes participate in semantic evidence identity;
+22. CI never reports a required but unexecuted check as passing;
+23. deferred architecture remains outside the bootstrap implementation unless Stage 10+ evidence changes the decision;
+24. customisation packs are optional peer skills and the three core skills remain usable without them;
+25. customisation-pack precedence is explicit instructions → approved/locked artifacts → selected pack → core defaults;
+26. customisation packs do not own Replicate/provider execution or silently reopen approved work;
+27. `music-pack-author` remains optional authoring support and is benchmarked for overlap control, operational specificity, showcase completeness, and boundary safety;
+28. core skill evals include pack-consumption boundary behaviour while pack-specific behavioural suites belong with the pack repository;
+29. every bounded production command is packaged under its owning skill rather than exposed as another installable skill;
+30. every command contract defines purpose, activation, inputs, preconditions, outputs, invariants, failure semantics, forbidden behaviour, dependencies and evaluation hooks;
+31. command IDs represent production responsibilities rather than implementation mechanics;
+32. each `SKILL.md` owns command selection and orchestration without introducing a generic workflow engine;
+33. benchmark/eval metadata can identify command-level cases separately from whole-skill cases;
+34. command coverage reports zero-case commands as gaps rather than passes;
+35. command execution continues to use the existing artifact/lifecycle model rather than creating command-result artifacts or command-specific lifecycle states.
+
+
+### Command-decomposition implementation status
+
+This specification now defines the target command layout and contracts. The current repository implementation must add the `commands/` directories, command-aware skill orchestration and command-level benchmark cases **before Stage 13 is treated as ready to run**.
+
+A green pre-command repository check does not prove this new contract. Command-aware validation becomes part of the next implementation change.
 
 
 ## 28. Stage 12 Completion
@@ -1363,7 +1672,8 @@ Stage 12 is complete when installation is configured without claiming clean-proj
 ✓ Agent Skills CLI is the canonical installer
 ✓ project-local installation is the default
 ✓ global installation is documented as optional
-✓ all three Music Production Skills can be selected explicitly
+✓ the three core Music Production Skills can be selected explicitly
+✓ `music-pack-author` remains separately selectable as optional authoring support
 ✓ Claude Code and Codex targeting are documented
 ✓ official Replicate peer skills are documented for generative production
 ✓ per-skill runtime requirements are documented
@@ -1377,4 +1687,4 @@ Stage 12 is complete when installation is configured without claiming clean-proj
 
 ---
 
-**Music Production Skills — Creative Skills Repository and Contracts Specification v3**
+**Music Production Skills — Creative Skills Repository and Contracts Specification v6**

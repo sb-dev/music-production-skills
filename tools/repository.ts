@@ -1,9 +1,10 @@
 import { readdir, readFile, stat } from "node:fs/promises";
 import { join, relative } from "node:path";
 import { parseEvalCases } from "./contracts.ts";
+import { parseBenchmarkCases } from "./benchmark.ts";
 
-export const expectedSkills = ["music-compose", "music-produce", "music-evaluate"] as const;
-export const requiredDocs = ["01-creative-skills-system-spec.md","02-creative-skills-workflows-and-artifacts-spec.md","03-creative-skills-repository-and-contracts-spec.md","04-testing-and-benchmark-spec.md","extraction-candidates.md","installation.md"] as const;
+export const expectedSkills = ["music-compose", "music-produce", "music-evaluate", "music-pack-author"] as const;
+export const requiredDocs = ["01-creative-skills-system-spec.md","02-creative-skills-workflows-and-artifacts-spec.md","03-creative-skills-repository-and-contracts-spec.md","04-testing-and-benchmark-spec.md","05-customisation-packs-spec.md","06-extension-pack-catalogue.md"] as const;
 export interface ValidationResult { readonly errors: readonly string[]; readonly warnings: readonly string[]; readonly stats: { readonly skills: number; readonly evalCases: number; readonly executableEvalCases: number } }
 async function exists(path: string): Promise<boolean> { try { await stat(path); return true; } catch { return false; } }
 function parseFrontmatter(markdown: string): {name:string;description:string} {
@@ -17,6 +18,13 @@ async function walkFiles(dir:string):Promise<string[]>{ const out:string[]=[]; f
 export async function validateRepository(root:string):Promise<ValidationResult>{
   const errors:string[]=[],warnings:string[]=[]; let evalCases=0, executableEvalCases=0;
   for(const doc of requiredDocs) if(!await exists(join(root,"docs",doc))) errors.push(`Missing required doc: docs/${doc}`);
+  const benchmarkFiles=["taxonomy.json","rubrics.json","baseline.json","example-matrix.json","profiles.json"] as const;
+  for(const file of benchmarkFiles) if(!await exists(join(root,"tests","benchmark",file))) errors.push(`Missing benchmark contract file: tests/benchmark/${file}`);
+  const taxonomyPath=join(root,"tests","benchmark","taxonomy.json");
+  if(await exists(taxonomyPath)) try {
+    const benchmarkCases=parseBenchmarkCases(JSON.parse(await readFile(taxonomyPath,"utf8")));
+    for(const item of benchmarkCases) if(item.source && !await exists(join(root,item.source))) errors.push(`Benchmark case ${item.id} references missing source: ${item.source}`);
+  } catch(error) { errors.push(`Invalid benchmark taxonomy: ${error instanceof Error?error.message:String(error)}`); }
   for(const skill of expectedSkills){
     const dir=join(root,"skills",skill), skillPath=join(dir,"SKILL.md"), evalPath=join(dir,"evals","evals.json");
     if(!await exists(skillPath)){errors.push(`Missing skill contract: skills/${skill}/SKILL.md`);continue;}
@@ -33,6 +41,18 @@ export async function validateRepository(root:string):Promise<ValidationResult>{
     for(const file of await walkFiles(dir)){ if(!/\.(md|ts|json|ya?ml)$/.test(file)) continue; const content=await readFile(file,"utf8"); if(content.includes("../../docs/")||content.includes("../../../docs/")) errors.push(`Skill-local runtime file references repository docs: ${relative(root,file)}`); }
   }
   const examplesDir=join(root,"examples"); if(!await exists(examplesDir)) errors.push("Missing examples directory"); else for(const e of (await readdir(examplesDir,{withFileTypes:true})).filter(x=>x.isDirectory())) if((await readdir(join(examplesDir,e.name))).length===0) errors.push(`Empty example directory: ${e.name}`);
+  const packExamplesDir=join(root,"examples","packs");
+  if(await exists(packExamplesDir)){
+    for(const pack of (await readdir(packExamplesDir,{withFileTypes:true})).filter(x=>x.isDirectory())){
+      const packDir=join(packExamplesDir,pack.name);
+      for(const ex of (await readdir(packDir,{withFileTypes:true})).filter(x=>x.isDirectory())){
+        const readme=join(packDir,ex.name,"README.md");
+        if(!await exists(readme)){ errors.push(`Missing extension-pack showcase README: examples/packs/${pack.name}/${ex.name}/README.md`); continue; }
+        const content=await readFile(readme,"utf8");
+        if(!/^## Prompt$/m.test(content) || !/## Prompt\s+```text[\s\S]+?```/m.test(content)) errors.push(`Extension-pack showcase lacks full fenced generation prompt: examples/packs/${pack.name}/${ex.name}/README.md`);
+      }
+    }
+  }
   if(evalCases>0&&executableEvalCases===0) warnings.push("All declared skill evals are manual; deterministic repository tests provide executable coverage separately.");
   return {errors,warnings,stats:{skills:expectedSkills.length,evalCases,executableEvalCases}};
 }

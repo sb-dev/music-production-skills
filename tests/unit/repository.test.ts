@@ -5,6 +5,6 @@ import { validateRepository } from "../../tools/repository.ts";
 test("repository contract validates", async () => {
   const result = await validateRepository(process.cwd());
   assert.deepEqual(result.errors, []);
-  assert.equal(result.stats.skills, 3);
-  assert.equal(result.stats.evalCases, 15);
+  assert.equal(result.stats.skills, 4);
+  assert.equal(result.stats.evalCases, 23);
 });

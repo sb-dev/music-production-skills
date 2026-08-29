@@ -65,5 +65,20 @@
       "rewrite composition",
       "claim composition owns mastering"
     ]
+  },
+  {
+    "name": "customisation-pack-compose-precedence",
+    "category": "normal",
+    "input": "Use a melodic-techno-club-track customisation pack. The core motif is approved. Develop the arrangement without changing the motif.",
+    "expect": [
+      "apply relevant club-track form/groove/arrangement guidance",
+      "approved motif preserved",
+      "pack treated below explicit and approved decisions"
+    ],
+    "forbid": [
+      "rewrite approved motif",
+      "invent mandatory vocals",
+      "treat pack as provider executor"
+    ]
   }
 ]

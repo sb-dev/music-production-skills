@@ -1,0 +1,17 @@
+{
+  "ci": {
+    "description": "Free deterministic checks and transcript re-scoring only.",
+    "examples": [],
+    "packs": []
+  },
+  "release-core": {
+    "description": "One representative public production from each level plus every initial extension-pack showcase.",
+    "examples": ["night-drive", "concrete-halo", "low-orbit", "redline", "last-train-home"],
+    "packs": ["intimate-singer-songwriter-single", "melodic-techno-club-track", "cinematic-hybrid-score", "adaptive-game-score", "premium-brand-music"]
+  },
+  "full-production": {
+    "description": "All 15 public examples plus every initial extension-pack showcase.",
+    "examples": ["night-drive", "sunday-static", "northbound", "concrete-halo", "soft-collapse", "high-water", "low-orbit", "half-light", "static-summer", "redline", "no-reply", "winter-road", "after-hours", "last-train-home", "checkpoint"],
+    "packs": ["intimate-singer-songwriter-single", "melodic-techno-club-track", "cinematic-hybrid-score", "adaptive-game-score", "premium-brand-music"]
+  }
+}

@@ -65,5 +65,20 @@
     "forbid": [
       "claim stereo-width finding"
     ]
+  },
+  {
+    "name": "customisation-pack-intentional-traits",
+    "category": "normal",
+    "input": "Evaluate an intimate singer-songwriter production using its customisation pack. Slight human timing is intentional, but several lyrics are unintelligible.",
+    "expect": [
+      "do not penalise intentional human timing",
+      "flag lyric intelligibility failure",
+      "apply pack criteria below explicit and approved requirements"
+    ],
+    "forbid": [
+      "treat all imperfection as acceptable",
+      "ignore unintelligible lyrics",
+      "infer unrelated club-production criteria"
+    ]
   }
 ]

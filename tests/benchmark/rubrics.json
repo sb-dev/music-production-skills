@@ -1,0 +1,112 @@
+{
+  "creativeScale": [
+    "unacceptable",
+    "weak",
+    "acceptable",
+    "strong"
+  ],
+  "semanticAxes": [
+    "detection",
+    "precision",
+    "routing",
+    "scope",
+    "preservation",
+    "boundary",
+    "pack-fidelity",
+    "creative-quality",
+    "pack-author-quality",
+    "delivery"
+  ],
+  "generalMusic": [
+    "intent-fit",
+    "composition",
+    "arrangement",
+    "performance",
+    "production",
+    "preservation",
+    "technical",
+    "delivery"
+  ],
+  "packs": {
+    "intimate-singer-songwriter-single": [
+      "song-coherence",
+      "lyric-prosody",
+      "vocal-intimacy",
+      "arrangement-restraint",
+      "dynamic-authenticity"
+    ],
+    "melodic-techno-club-track": [
+      "groove-stability",
+      "kick-bass-relationship",
+      "long-form-energy",
+      "transition-function",
+      "club-structure"
+    ],
+    "cinematic-hybrid-score": [
+      "dramatic-function",
+      "sync-accuracy",
+      "dialogue-space",
+      "cue-development",
+      "handoff-readiness"
+    ],
+    "adaptive-game-score": [
+      "loop-seamlessness",
+      "layer-compatibility",
+      "state-contrast",
+      "transition-function",
+      "runtime-handoff-readiness"
+    ],
+    "premium-brand-music": [
+      "brand-fit",
+      "mnemonic-distinctiveness",
+      "identity-preservation",
+      "exact-duration-variants",
+      "short-form-impact"
+    ]
+  },
+  "packAuthor": [
+    "production-grammar-justification",
+    "operational-specificity",
+    "core-skill-integration",
+    "pack-aware-evaluation",
+    "showcase-quality",
+    "minimality",
+    "boundary-safety"
+  ],
+  "levels": {
+    "1-controlled-output": [
+      "brief-fit",
+      "musical-coherence",
+      "constraint-satisfaction",
+      "appropriate-production-commitment"
+    ],
+    "2-selection-preservation": [
+      "alternative-distinctness",
+      "selection-quality",
+      "lineage",
+      "approved-decision-preservation"
+    ],
+    "3-full-production": [
+      "intent-fit",
+      "composition",
+      "arrangement",
+      "performance",
+      "production",
+      "technical",
+      "delivery"
+    ],
+    "4-targeted-repair": [
+      "defect-correction",
+      "correction-scope",
+      "preservation",
+      "boundary-integrity",
+      "regression-avoidance"
+    ],
+    "5-cross-domain-delivery": [
+      "handoff-completeness",
+      "domain-boundary-compliance",
+      "timing-or-runtime-metadata",
+      "delivery-correctness"
+    ]
+  }
+}

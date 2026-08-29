@@ -100,6 +100,42 @@ A problem found downstream may reopen the smallest responsible upstream decision
 
 ---
 
+## 4A. Command View of the Workflow
+
+Command decomposition is an execution view over this workflow, not another workflow model.
+
+```text
+workflow/artifact semantics
+        ↓
+skill orchestration
+        ↓
+bounded command
+        ↓
+existing artifacts and state transitions
+```
+
+Commands may consume or produce the artifacts defined by this specification, but commands are **not** first-class production artifacts and do not create additional lifecycle states.
+
+For example:
+
+```text
+select-material
+→ updates selection lineage / decision state
+→ does not create a `selection-command` artifact
+
+refine-region
+→ produces a revised production artifact + provenance
+→ does not create a new `repair` lifecycle state
+
+route-failure
+→ produces or contributes to an evaluation report
+→ does not become a new evaluation artifact type
+```
+
+The workflow remains authoritative for artifact semantics, promotion, preservation and provenance. The command layer exists only to make bounded behaviour explicit and independently testable.
+
+---
+
 ## 5. First-Class Artifacts
 
 Initial core vocabulary:
@@ -1398,4 +1434,4 @@ The workflow model is correct when:
 
 ---
 
-**Music Production Skills — Creative Skills Workflows and Artifacts Specification v2**
+**Music Production Skills — Creative Skills Workflows and Artifacts Specification v3**
